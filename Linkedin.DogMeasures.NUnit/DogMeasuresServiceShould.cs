@@ -60,5 +60,16 @@ namespace Linkedin.DogMeasures.NUnit
                 result.DeviationType == Models.DogWeightInfo.WeightDeviationType.InRange);
             Assert.AreEqual(0, result.WeightDeviation);
         }
+
+        [Test]
+        public void DogIsInOverWeightIfBreedIsLabradorAndWeightInRange36And40(
+            [Range(36, 40)] int weight)
+        {
+            var result = _dogMeasuresService.CheckDogIdealWeight(
+                "Labrador Retriever", weight);
+            Assert.True(
+                result.DeviationType == Models.DogWeightInfo.WeightDeviationType.Overweight);
+            Assert.AreEqual(weight - 35, result.WeightDeviation);
+        }
     }
 }
