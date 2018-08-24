@@ -15,6 +15,8 @@ namespace Linkedin.DogMeasures.Models
             Huge
         }
 
+        public string Breed { get; set; }
+
         public int FoodWeight { get; set; }
 
         public int TimesPerDay { get; set; }
