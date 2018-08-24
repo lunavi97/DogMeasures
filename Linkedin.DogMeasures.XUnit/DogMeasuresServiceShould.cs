@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Xunit;
 
 namespace Linkedin.DogMeasures.XUnit
 {
@@ -12,6 +13,13 @@ namespace Linkedin.DogMeasures.XUnit
         public DogMeasuresServiceShould()
         {
             _dogMeasuresService = new DogMeasuresService();
+        }
+
+        [Fact]
+        public void ThrowsArgumentNullExceptionIfBreedIsNull()
+        {
+            Assert.Throws<ArgumentNullException>(
+                () => _dogMeasuresService.CheckDogIdealWeight(null, 0));
         }
     }
 }
