@@ -21,7 +21,7 @@ namespace Linkedin.DogMeasures.Tests
         [TestMethod]
         public void ThrowsArgumentNullExceptionIfBreedIsNull()
         {
-            _dogMeasuresService.CheckDogIdealWeight(null, 0);
+            var result = _dogMeasuresService.CheckDogIdealWeight(null, 0);
         }
     }
 }
