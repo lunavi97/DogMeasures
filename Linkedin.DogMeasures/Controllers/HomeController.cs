@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Linkedin.DogMeasures.Models;
+using Linkedin.DogMeasures.Services;
 
 namespace Linkedin.DogMeasures.Controllers
 {
@@ -15,29 +16,23 @@ namespace Linkedin.DogMeasures.Controllers
             return View();
         }
 
-        public IActionResult About()
+        [HttpPost]
+        public async Task<IActionResult> Index([FromForm]DogInfoRequest info)
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            if (!ModelState.IsValid)
+            {
+                return View(info);
+            }
+            try
+            {
+                var measures = new DogMeasuresService().CheckDogIdealWeight(info.Breed, info.Weight);
+                return await Task.FromResult(View("MeasuresResults", measures));
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", $"Error al obtener la información sobre tu perro: {ex.Message}.");
+                return View(info);
+            }
         }
     }
 }
