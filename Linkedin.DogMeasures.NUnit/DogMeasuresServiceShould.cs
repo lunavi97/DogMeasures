@@ -38,5 +38,16 @@ namespace Linkedin.DogMeasures.NUnit
             Assert.Throws<ArgumentOutOfRangeException>(
                 () => _dogMeasuresService.CheckDogIdealWeight("Caniche", -3));
         }
+
+        [Test]
+        public void DogIsBelowWeightIfBreedIsLabradorAndWeightInRange5And19(
+            [Range(5, 19)] int weight)
+        {
+            var result = _dogMeasuresService.CheckDogIdealWeight(
+                "Labrador Retriever", weight);
+            Assert.True(
+                result.DeviationType == Models.DogWeightInfo.WeightDeviationType.BelowWeight);
+            Assert.AreEqual(20 - weight, result.WeightDeviation);
+        }
     }
 }
