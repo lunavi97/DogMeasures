@@ -1,11 +1,11 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linkedin.DogMeasures", "Linkedin.DogMeasures\Linkedin.DogMeasures.csproj", "{D1132CB2-24FC-453A-A675-59D9A509A85D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Linkedin.DogMeasures.Tests", "Linkedin.DogMeasures.Tests\Linkedin.DogMeasures.Tests.csproj", "{8AF23B02-AB9E-40A7-9064-5EA65A166633}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Linkedin.DogMeasures.MSTest", "Linkedin.DogMeasures.MSTest\Linkedin.DogMeasures.MSTest.csproj", "{8AF23B02-AB9E-40A7-9064-5EA65A166633}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

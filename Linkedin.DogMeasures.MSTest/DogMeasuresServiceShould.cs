@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Linkedin.DogMeasures.Tests
+namespace Linkedin.DogMeasures.MSTest
 {
     [TestClass]
     public class DogMeasuresServiceShould
