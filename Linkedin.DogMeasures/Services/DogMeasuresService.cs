@@ -168,5 +168,15 @@ namespace Linkedin.DogMeasures.Services
                 WeightDeviation = 0m
             };
         }
+
+        public int GetLifeExpectancy(string breed)
+        {
+            var dog = _dogInfo.SingleOrDefault(d => d.Breed.Equals(breed, StringComparison.InvariantCultureIgnoreCase));
+            if (dog == null)
+            {
+                throw new BreedNotFoundException("No se encontró esa raza.");
+            }
+            return dog.LifeExpectancy;
+        }
     }
 }
