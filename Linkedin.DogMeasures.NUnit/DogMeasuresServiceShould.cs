@@ -71,5 +71,11 @@ namespace Linkedin.DogMeasures.NUnit
                 result.DeviationType == Models.DogWeightInfo.WeightDeviationType.Overweight);
             Assert.AreEqual(weight - 35, result.WeightDeviation);
         }
+
+        [Test]
+        public void ReturnsLifeExpectancy14IfBreedIsLabrador()
+        {
+            Assert.AreEqual(14, _dogMeasuresService.GetLifeExpectancy("Labrador Retriever"));
+        }
     }
 }
