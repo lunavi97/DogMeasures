@@ -1,4 +1,5 @@
-﻿using Linkedin.DogMeasures.Services;
+﻿using Linkedin.DogMeasures.Exceptions;
+using Linkedin.DogMeasures.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,13 @@ namespace Linkedin.DogMeasures.Tests
         public void ThrowsArgumentNullExceptionIfBreedIsNull()
         {
             var result = _dogMeasuresService.CheckDogIdealWeight(null, 0);
+        }
+
+        [ExpectedException(typeof(BreedNotFoundException))]
+        [TestMethod]
+        public void ThrowsBreedNotFoundExceptionIfBreedIsSamoyedo()
+        {
+            var result = _dogMeasuresService.CheckDogIdealWeight("Samoyedo", 20);
         }
     }
 }
