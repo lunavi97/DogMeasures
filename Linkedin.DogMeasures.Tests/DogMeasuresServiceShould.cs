@@ -16,5 +16,12 @@ namespace Linkedin.DogMeasures.Tests
         {
             _dogMeasuresService = new DogMeasuresService();
         }
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod]
+        public void ThrowsArgumentNullExceptionIfBreedIsNull()
+        {
+            _dogMeasuresService.CheckDogIdealWeight(null, 0);
+        }
     }
 }
