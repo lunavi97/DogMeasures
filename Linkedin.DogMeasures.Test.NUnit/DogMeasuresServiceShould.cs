@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Linkedin.DogMeasures.NUnit
+namespace Linkedin.DogMeasures.Test.NUnit
 {
     [TestFixture]
     public class DogMeasuresServiceShould

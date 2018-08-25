@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Text;
 using Xunit;
 
-namespace Linkedin.DogMeasures.XUnit
+namespace Linkedin.DogMeasures.Test.XUnit
 {
     public class DogMeasuresServiceShould
     {
