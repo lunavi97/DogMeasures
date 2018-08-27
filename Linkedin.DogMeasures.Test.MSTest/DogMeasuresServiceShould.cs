@@ -18,6 +18,7 @@ namespace Linkedin.DogMeasures.Test.MSTest
             _dogMeasuresService = new DogMeasuresService();
         }
 
+        [TestCategory("exception")]
         [ExpectedException(typeof(ArgumentNullException))]
         [TestMethod]
         public void ThrowsArgumentNullExceptionIfBreedIsNull()
@@ -25,6 +26,7 @@ namespace Linkedin.DogMeasures.Test.MSTest
             var result = _dogMeasuresService.CheckDogIdealWeight(null, 0);
         }
 
+        [TestCategory("exception")]
         [ExpectedException(typeof(BreedNotFoundException))]
         [TestMethod]
         public void ThrowsBreedNotFoundExceptionIfBreedIsSamoyedo()
@@ -32,6 +34,7 @@ namespace Linkedin.DogMeasures.Test.MSTest
             var result = _dogMeasuresService.CheckDogIdealWeight("Samoyedo", 20);
         }
 
+        [TestCategory("labrador")]
         [DataTestMethod]
         [DataRow("Labrador Retriever", 20)]
         [DataRow("Labrador Retriever", 21)]
@@ -59,6 +62,7 @@ namespace Linkedin.DogMeasures.Test.MSTest
             Assert.AreEqual(0, result.WeightDeviation);
         }
 
+        [TestCategory("labrador")]
         [DataTestMethod]
         [DataRow("Labrador Retriever", 5)]
         [DataRow("Labrador Retriever", 6)]
@@ -85,6 +89,7 @@ namespace Linkedin.DogMeasures.Test.MSTest
             Assert.AreEqual(20 - weight, result.WeightDeviation);
         }
 
+        [TestCategory("labrador")]
         [DataTestMethod]
         [DataRow("Labrador Retriever", 36)]
         [DataRow("Labrador Retriever", 37)]
@@ -100,11 +105,72 @@ namespace Linkedin.DogMeasures.Test.MSTest
             Assert.AreEqual(weight - 35, result.WeightDeviation);
         }
 
+        [TestCategory("labrador")]
         [TestMethod]
         public void ReturnsLifeExpectancy14IfBreedIsLabrador()
         {
             Assert.AreEqual(
                 14, _dogMeasuresService.GetLifeExpectancy("Labrador Retriever"));
+        }
+
+        [TestCategory("beagle")]
+        [TestMethod]
+        public void DogIsInOverweight_IfBreedBeagleAndWeight20()
+        {
+            var result = _dogMeasuresService.CheckDogIdealWeight("Beagle", 20);
+            Assert.IsTrue(
+                result.DeviationType == Models.DogWeightInfo.WeightDeviationType.Overweight);
+            Assert.AreEqual(6, result.WeightDeviation);
+        }
+
+        [TestCategory("beagle")]
+        [TestMethod]
+        public void DogIsInWeightRange_IfBreedBeagleAndWeight12()
+        {
+            var result = _dogMeasuresService.CheckDogIdealWeight("Beagle", 12);
+            Assert.IsTrue(
+                result.DeviationType == Models.DogWeightInfo.WeightDeviationType.InRange);
+            Assert.AreEqual(0, result.WeightDeviation);
+        }
+        
+        [TestCategory("beagle")]
+        [TestMethod]
+        public void DogIsBelowWeight_IfBreedBeagleAndWeight5()
+        {
+            var result = _dogMeasuresService.CheckDogIdealWeight("Beagle", 5);
+            Assert.IsTrue(
+                result.DeviationType == Models.DogWeightInfo.WeightDeviationType.BelowWeight);
+            Assert.AreEqual(3, result.WeightDeviation);
+        }
+
+        [TestCategory("boxer")]
+        [TestMethod]
+        public void DogIsInOverweight_IfBreedBoxerAndWeight50()
+        {
+            var result = _dogMeasuresService.CheckDogIdealWeight("Bóxer", 50);
+            Assert.IsTrue(
+                result.DeviationType == Models.DogWeightInfo.WeightDeviationType.Overweight);
+            Assert.AreEqual(10, result.WeightDeviation);
+        }
+
+        [TestCategory("boxer")]
+        [TestMethod]
+        public void DogIsInWeightRange_IfBreedBoxerAndWeight31()
+        {
+            var result = _dogMeasuresService.CheckDogIdealWeight("Bóxer", 31);
+            Assert.IsTrue(
+                result.DeviationType == Models.DogWeightInfo.WeightDeviationType.InRange);
+            Assert.AreEqual(0, result.WeightDeviation);
+        }
+
+        [TestCategory("boxer")]
+        [TestMethod]
+        public void DogIsBelowWeight_IfBreedBoxerAndWeight16()
+        {
+            var result = _dogMeasuresService.CheckDogIdealWeight("Bóxer", 16);
+            Assert.IsTrue(
+                result.DeviationType == Models.DogWeightInfo.WeightDeviationType.BelowWeight);
+            Assert.AreEqual(4, result.WeightDeviation);
         }
     }
 }
