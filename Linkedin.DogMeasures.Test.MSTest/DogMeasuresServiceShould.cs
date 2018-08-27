@@ -34,6 +34,7 @@ namespace Linkedin.DogMeasures.Test.MSTest
             var result = _dogMeasuresService.CheckDogIdealWeight("Samoyedo", 20);
         }
 
+        [Priority(1)]
         [TestCategory("labrador")]
         [DataTestMethod]
         [DataRow("Labrador Retriever", 20)]
@@ -62,6 +63,7 @@ namespace Linkedin.DogMeasures.Test.MSTest
             Assert.AreEqual(0, result.WeightDeviation);
         }
 
+        [Priority(1)]
         [TestCategory("labrador")]
         [DataTestMethod]
         [DataRow("Labrador Retriever", 5)]
@@ -89,6 +91,7 @@ namespace Linkedin.DogMeasures.Test.MSTest
             Assert.AreEqual(20 - weight, result.WeightDeviation);
         }
 
+        [Priority(1)]
         [TestCategory("labrador")]
         [DataTestMethod]
         [DataRow("Labrador Retriever", 36)]
@@ -105,6 +108,7 @@ namespace Linkedin.DogMeasures.Test.MSTest
             Assert.AreEqual(weight - 35, result.WeightDeviation);
         }
 
+        [Priority(1)]
         [TestCategory("labrador")]
         [TestMethod]
         public void ReturnsLifeExpectancy14IfBreedIsLabrador()
@@ -113,6 +117,7 @@ namespace Linkedin.DogMeasures.Test.MSTest
                 14, _dogMeasuresService.GetLifeExpectancy("Labrador Retriever"));
         }
 
+        [Priority(2)]
         [TestCategory("beagle")]
         [TestMethod]
         public void DogIsInOverweight_IfBreedBeagleAndWeight20()
@@ -123,6 +128,7 @@ namespace Linkedin.DogMeasures.Test.MSTest
             Assert.AreEqual(6, result.WeightDeviation);
         }
 
+        [Priority(2)]
         [TestCategory("beagle")]
         [TestMethod]
         public void DogIsInWeightRange_IfBreedBeagleAndWeight12()
@@ -132,7 +138,8 @@ namespace Linkedin.DogMeasures.Test.MSTest
                 result.DeviationType == Models.DogWeightInfo.WeightDeviationType.InRange);
             Assert.AreEqual(0, result.WeightDeviation);
         }
-        
+
+        [Priority(2)]
         [TestCategory("beagle")]
         [TestMethod]
         public void DogIsBelowWeight_IfBreedBeagleAndWeight5()
