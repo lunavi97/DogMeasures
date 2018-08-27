@@ -130,6 +130,7 @@ namespace Linkedin.DogMeasures.Test.MSTest
 
         [Priority(2)]
         [TestCategory("beagle")]
+        [TestProperty("BreedType", "Medium")]
         [TestMethod]
         public void DogIsInWeightRange_IfBreedBeagleAndWeight12()
         {
