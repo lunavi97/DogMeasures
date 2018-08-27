@@ -132,7 +132,7 @@ namespace Linkedin.DogMeasures.Test.MSTest
         [TestCategory("beagle")]
         [TestProperty("BreedType", "Medium")]
         [TestMethod]
-        public void DogIsInWeightRange_IfBreedBeagleAndWeight12()
+        public void DogIsInWeightRangeIfBreedBeagleAndWeight12()
         {
             var result = _dogMeasuresService.CheckDogIdealWeight("Beagle", 12);
             Assert.IsTrue(
@@ -143,7 +143,7 @@ namespace Linkedin.DogMeasures.Test.MSTest
         [Priority(2)]
         [TestCategory("beagle")]
         [TestMethod]
-        public void DogIsBelowWeight_IfBreedBeagleAndWeight5()
+        public void DogIsBelowWeightIfBreedBeagleAndWeight5()
         {
             var result = _dogMeasuresService.CheckDogIdealWeight("Beagle", 5);
             Assert.IsTrue(
@@ -153,7 +153,7 @@ namespace Linkedin.DogMeasures.Test.MSTest
 
         [TestCategory("boxer")]
         [TestMethod]
-        public void DogIsInOverweight_IfBreedBoxerAndWeight50()
+        public void DogIsInOverweightIfBreedBoxerAndWeight50()
         {
             var result = _dogMeasuresService.CheckDogIdealWeight("Bóxer", 50);
             Assert.IsTrue(
@@ -163,7 +163,7 @@ namespace Linkedin.DogMeasures.Test.MSTest
 
         [TestCategory("boxer")]
         [TestMethod]
-        public void DogIsInWeightRange_IfBreedBoxerAndWeight31()
+        public void DogIsInWeightRangeIfBreedBoxerAndWeight31()
         {
             var result = _dogMeasuresService.CheckDogIdealWeight("Bóxer", 31);
             Assert.IsTrue(
@@ -173,7 +173,7 @@ namespace Linkedin.DogMeasures.Test.MSTest
 
         [TestCategory("boxer")]
         [TestMethod]
-        public void DogIsBelowWeight_IfBreedBoxerAndWeight16()
+        public void DogIsBelowWeightIfBreedBoxerAndWeight16()
         {
             var result = _dogMeasuresService.CheckDogIdealWeight("Bóxer", 16);
             Assert.IsTrue(
