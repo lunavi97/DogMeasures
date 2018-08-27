@@ -180,5 +180,12 @@ namespace Linkedin.DogMeasures.Test.MSTest
                 result.DeviationType == Models.DogWeightInfo.WeightDeviationType.BelowWeight);
             Assert.AreEqual(4, result.WeightDeviation);
         }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentOutOfRangeException))]
+        public void ThrowsArgumentOutOfRangeExceptionIfWeightIsNegative()
+        {
+            var result = _dogMeasuresService.CheckDogIdealWeight("Labrador Retriever", -5);
+        }
     }
 }
